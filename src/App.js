@@ -21,16 +21,13 @@ class App extends Component{
   // }
 
   getPrime(num){
-    let arr = Array.from({ length: num - 1 }).map((x, i) => i + 2),
+    let primes = Array.from({ length: num - 1 }).map((m, n) => n + 2),
       sqroot = Math.floor(Math.sqrt(num)),
-      count = 0,
-      numsTillSqroot = Array.from({ length: sqroot - 1 }).map((x, i) => i + 2);
-    console.log(arr)
-    console.log(sqroot)
-    console.log(numsTillSqroot)
-    numsTillSqroot.forEach(x => (arr = arr.filter(y => y % x !== 0 || y === x)));
-    console.log( arr);
-    return arr;
+      numsTillSqroot = Array.from({ length: sqroot - 1 }).map((m, n) => n + 2);
+    
+    numsTillSqroot.forEach(m => (primes = primes.filter(n => n % m !== 0 || n === m)));
+
+    return primes;
   }
 
   // getPrime(num){
@@ -109,11 +106,11 @@ class App extends Component{
 
     const grid = table.map(c => { 
       return (
-        <tr>
+        <tr key={c}>
           {
             c.map(e => {
               return (
-                <td>{e}</td>
+                <td data-testid='primes' key={e}>{e}</td>
               )
             })
           }
@@ -123,7 +120,7 @@ class App extends Component{
 
     const tableH = row.map(c => {
       return(
-        <th>{c}</th>
+        <th key={c}>{c}</th>
       )
     })
     return(
@@ -132,12 +129,12 @@ class App extends Component{
       <div className='form-container'>
         <div className='form'>
           <div className='form-group'>
-            <label className='form-label'>Row</label>
-            <input name ='row' onChange={this.handleRow} className='form-input' placeholder='Enter first number' />
+            <label htmlFor='row' className='form-label'>Row</label>
+            <input id='row' name ='row' onChange={this.handleRow} className='form-input' placeholder='Enter first number' />
           </div>
           <div className='form-group'>
-            <label className='form-label'>Col</label>
-            <input name='col' onChange={this.handleCol} className='form-input' placeholder='Enter second number' />
+            <label htmlFor='col' className='form-label'>Col</label>
+            <input id='col' name='col' onChange={this.handleCol} className='form-input' placeholder='Enter second number' />
           </div>
           <button onClick={this.multiplication} className='btn'>Generate</button>
         </div>
