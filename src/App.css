@@ -121,7 +121,7 @@ tr:nth-child(even) {
 }
 
 .form-label{
-  color: #a2b2c6;
+  color: hsl(214deg 22% 50%);
   font-size: 19px;
   font-weight: 600;
 }
@@ -153,9 +153,15 @@ tr:nth-child(even) {
   box-shadow: none;
 }
 
+@media screen and (max-width: 420px) {
+  .form-input{
+    width: max-content;
+  }
+}
+
 .form-input::-webkit-input-placeholder {
   font-size: 19px;
-  color: #b4c3db;
+  color: hsl(214deg 22% 50%);
 }
 
 .btn{
